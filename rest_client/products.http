@@ -1,0 +1,50 @@
+### Get All Products
+GET http://localhost:3000/api/products
+
+### get single product
+GET http://localhost:3000/api/products?title=book&minPrice=75&maxPrice=200
+
+
+### get single product
+GET http://localhost:3000/api/products/9
+
+
+### 2. Login - save token
+# @name login
+POST http://localhost:3000/api/users/auth/login
+Content-Type: application/json
+
+{
+  "email": "mahmoud5@gmail.com",
+  "password": "0404834490"
+}
+
+### 3. Get current user (use token from login)
+@authToken = {{login.response.body.accessToken}}
+
+### Create new product
+POST http://localhost:3000/api/products
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "book",
+  "description": "Best book in the world",
+  "price":100
+}
+
+
+### Update product
+PUT http://localhost:3000/api/products/11
+Content-Type: application/json
+Authorization: Bearer {{authToken}}
+
+{
+  "title": "Keyboard"
+}
+
+
+
+### delete product
+DELETE  http://localhost:3000/api/products/12
+Authorization: Bearer {{authToken}}

@@ -1,0 +1,54 @@
+
+
+### 2. Login - save token
+# @name login
+POST http://localhost:3000/api/users/auth/login
+Content-Type: application/json
+
+{
+  "email": "mahmoud5@gmail.com",
+  "password": "0404834490"
+}
+
+
+
+### 3. Get current user (use token from login)
+@authToken = {{login.response.body.accessToken}}
+
+
+
+# create a new review
+POST http://localhost:3000/api/reviews/10
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "rating": 2,
+  "comment": "This is a great product!"
+}
+
+### get all reviews
+GET http://localhost:3000/api/reviews?pageNumber=1&reviewPerPage=5
+Authorization: Bearer {{authToken}}
+
+
+### get a specific review
+GET http://localhost:3000/api/reviews/2
+Authorization: Bearer {{authToken}}
+
+
+### update a specific review
+PUT http://localhost:3000/api/reviews/2
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+  "rating": 4,
+  "comment": "This is an even better product!"
+}
+
+
+
+### delete a specific review
+DELETE  http://localhost:3000/api/reviews/5
+Authorization: Bearer {{authToken}}
