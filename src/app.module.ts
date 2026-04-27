@@ -21,7 +21,7 @@ import { Review } from './reviews/review.entity';
 import { APP_GUARD, APP_INTERCEPTOR } from '@nestjs/core';
 import helmet from 'helmet';
 import { ThrottlerModule, ThrottlerGuard } from '@nestjs/throttler';
-import { dataSourceOptions } from 'db/data-source';
+import { dataSourceOptions } from '../db/data-source';
 
 @Module({
   imports: [
